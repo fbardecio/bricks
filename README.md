@@ -33,11 +33,11 @@ _Note: Be sure to replace `<BRICK_NAME>` with one of the bricks mentioned_
 
 - [Official Mason Documentation][1]
 - [Observable Flutter: Building a Mason brick][2]
-- [mason_link][3]
+
 
 [1]: https://docs.brickhub.dev
 [2]: https://youtu.be/o8B1EfcUisw
-[3]: https://pub.dev/packages/mason
 
 [//]: # "links."
 [functions_api]: https://github.com/fbardecio/bricks/tree/develop/functions_api
+[mason_link]: https://pub.dev/packages/mason
