@@ -1,0 +1,22 @@
+name: functions_api
+description: A brick for creating a Firebase Cloud Functions API CRUD
+
+repository: https://github.com/fbardecio/bricks
+
+version: 0.1.0+1
+
+environment:
+  mason: ^0.1.0
+
+vars:
+  name:
+    type: string
+    description: The name for the module. It must be a singular noun.
+    default: user
+    prompt: What's the module name (singular noun)?
+
+  add_firestore_crud:
+    type: boolean
+    description: Wether to add initial Firestore CRUD operations as a dependency in the module's service.
+    default: true
+    prompt: "Add Firestore CRUD operations as a dependency in the module's service?"
