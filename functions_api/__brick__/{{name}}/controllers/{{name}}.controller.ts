@@ -12,10 +12,10 @@ export const getAll{{ name.pascalCase() }}s = onRequest(async (req, res) => {
 
 export const get{{name.pascalCase()}}ById = onRequest(async (req, res) => {
     const id = req.query.id as string;
-    if (!id) return res.status(400).send('Missing {{name}} id');
+    if (!id) res.status(400).send('Missing {{name}} id');
 
     const {{name}} = await {{name}}Service.findById(id);
-    if (!{{name}}) return res.status(404).send('{{name.pascalCase()}} not found');
+    if (!{{name}}) res.status(404).send('{{name.pascalCase()}} not found');
     res.json({{name}});
 });
 
@@ -29,19 +29,19 @@ export const update{{name.pascalCase()}} = onRequest(async (req, res) => {
     const id = req.query.id as string;
     const data = req.body as Update{{name.pascalCase()}}Dto;
 
-    if (!id) return res.status(400).send('Missing {{name}} id');
+    if (!id) res.status(400).send('Missing {{name}} id');
 
     const updated = await {{name}}Service.update(id, data);
-    if (!updated) return res.status(404).send('{{name.pascalCase()}} not found');
+    if (!updated) res.status(404).send('{{name.pascalCase()}} not found');
     res.json(updated);
 });
 
 export const delete{{name.pascalCase()}} = onRequest(async (req, res) => {
     const id = req.query.id as string;
 
-    if (!id) return res.status(400).send('Missing {{name}} id');
+    if (!id) res.status(400).send('Missing {{name}} id');
 
     const success = await {{name}}Service.remove(id);
-    if (!success) return res.status(404).send('{{name.pascalCase()}} not found');
+    if (!success) res.status(404).send('{{name.pascalCase()}} not found');
     res.status(204).send();
 });

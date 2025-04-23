@@ -35,7 +35,7 @@ export class {{name.pascalCase()}}Service {
   async findById(id: string): Promise<{{name.pascalCase()}} | null> {
     {{#add_firestore_crud}}
     const doc = await this.collection.doc(id).get();
-    return doc.exists ? doc.data() : null;
+    return doc.exists && doc.data() ? doc.data() : null;
     {{/add_firestore_crud}}
     {{^add_firestore_crud}}
     // TODO: Implement findById logic
@@ -58,9 +58,9 @@ export class {{name.pascalCase()}}Service {
   async update(id: string, data: Update{{name.pascalCase()}}Dto): Promise<{{name.pascalCase()}} | null> {
     {{#add_firestore_crud}}
     const ref = this.collection.doc(id);
-    await ref.update(data);
+    await ref.set(data, { merge: true });
     const updated = await ref.get();
-    return updated.exists ? updated.data()! : null;
+    return updated.exists && updated.data() ? updated.data()! : null;
     {{/add_firestore_crud}}
     {{^add_firestore_crud}}
     // TODO: Implement update logic
