@@ -1,6 +1,5 @@
 # 0.1.0+1
 
-// Write a initial release changelog
 ### Added
 - Initial release of the `functions_api_crud` brick.
 - Generates modular CRUD API structure for Cloud Functions.

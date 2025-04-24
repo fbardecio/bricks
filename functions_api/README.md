@@ -1,9 +1,3 @@
-# Mason bricks 🧱
-
-[Mason][mason_link] reusable bricks.
-
-## Bricks ✨
-
 ### Functions API
 This brick scaffolds a modular CRUD API layer for Firebase Cloud Functions, inspired by the NestJS structure. It's designed to accelerate backend development using TypeScript and Firestore.
 
@@ -37,7 +31,7 @@ mason add <BRICK_NAME> --git-url https://github.com/fbardecio/bricks --git-path 
 mason add -g <BRICK_NAME> --git-url https://github.com/fbardecio/bricks --git-path path/to/<BRICK_NAME>
 
 # example to add flutter_package brick
-mason add -g flutter_package --git-url https://github.com/fbardecio/bricks --git-path flutter_package
+mason add -g functions_api --git-url https://github.com/fbardecio/bricks --git-path functions_api
 ```
 
 _Note: Be sure to replace `<BRICK_NAME>` with one of the bricks mentioned_

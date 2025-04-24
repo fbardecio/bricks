@@ -6,7 +6,8 @@
 
 | name                                       | description                                                                 |
 | ------------------------------------------ | --------------------------------------------------------------------------- |
-| [`functions_api`][functions_api]             | Scaffolds a modular CRUD API layer for Firebase Cloud Functions, inspired by the NestJS structure.             |
+| [`functions_api`][functions_api]           | Scaffolds a modular CRUD API layer for Firebase Cloud Functions, inspired by the NestJS structure.             |
+| [`rules_template`][rules_template]         | Creates a rules template for Firebase Firestore security rules.             |
 
 
 
@@ -24,7 +25,7 @@ mason add <BRICK_NAME> --git-url https://github.com/fbardecio/bricks --git-path 
 mason add -g <BRICK_NAME> --git-url https://github.com/fbardecio/bricks --git-path path/to/<BRICK_NAME>
 
 # example to add flutter_package brick
-mason add -g functions_api --git-url https://github.com/fbardecio/bricks --git-path functions_api/
+mason add -g functions_api --git-url https://github.com/fbardecio/bricks --git-path functions_api
 ```
 
 _Note: Be sure to replace `<BRICK_NAME>` with one of the bricks mentioned_
@@ -40,4 +41,5 @@ _Note: Be sure to replace `<BRICK_NAME>` with one of the bricks mentioned_
 
 [//]: # "links."
 [functions_api]: https://github.com/fbardecio/bricks/tree/develop/functions_api
+[rules_template]: https://github.com/fbardecio/bricks/tree/develop/rules_template
 [mason_link]: https://pub.dev/packages/mason
