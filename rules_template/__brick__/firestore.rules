@@ -1,0 +1,63 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Allow read and write operations on all documents
+    // Only if the request is made by an authenticated user.
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+
+    // Allow read and write access to a specific collection
+    // Only if the user is authenticated and the user's UID matches the `createdBy` field in the document.
+    match /collectionName/{documentId} {
+      allow read, write: if request.auth != null &&
+                          request.auth.uid == resource.data.createdBy;
+    }
+
+    // Allow read and write access to a specific collection
+    // Only if the user is authenticated and their UID is in the `allowedUsers` array in the document.
+    match /collectionName/{documentId} {
+      allow read, write: if request.auth != null &&
+                          request.auth.uid in resource.data.allowedUsers;
+    }
+
+    // Allow read access to a specific collection
+    // Only during the hours of 9:00–18:00 UTC.
+    match /collectionName/{documentId} {
+      allow read: if request.time.hours() >= 9 && request.time.hours() < 18;
+    }
+
+    // Allow update on a document only if the `name` field is being changed.
+    match /collectionName/{documentId} {
+      allow update: if request.resource.data.name != resource.data.name;
+    }
+
+    // Allow create operations on a document
+    // Only if the `rating` field is between 1 and 5 (inclusive).
+    match /collectionName/{documentId} {
+      allow create: if request.resource.data.rating >= 1 &&
+                     request.resource.data.rating <= 5;
+    }
+
+    // Allow read and create operations unconditionally.
+    // Allow update and delete only if the document’s `status` field is NOT equal to "completed".
+    match /collectionName/{documentId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if resource.data.status != "completed";
+    }
+
+    // Block all read and write operations on a specific collection.
+    match /collectionName/{documentId} {
+      allow read, write: if false;
+    }
+
+    // Block all access to all documents (catch-all deny rule).
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+  }
+}
